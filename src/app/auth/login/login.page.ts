@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { MapsCollectionPointService } from '../../services/maps-collection-point.service';
 
 @Component({
   selector: 'app-login',
