@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>news</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngFor="let n of news">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{n.title}}</ion-card-title>
+        <ion-card-subtitle>{{n.author}} - {{n.date}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ng-container *ngIf="!news.image">
+        <img mat-card-image src="{{image}}">
+      </ng-container>
+      <ng-container *ngIf="news.image">
+        <img mat-card-image src="{{n.image}}">
+      </ng-container>
+
+      <ion-card-content>
+        {{n.description}}
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>
