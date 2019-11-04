@@ -12,6 +12,8 @@ import {
 import { Component, OnInit } from "@angular/core";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { MapsCollectionPointService } from "../../services/maps-collection-point.service";
+import { interval } from "rxjs";
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-collection-points",
@@ -21,6 +23,7 @@ import { MapsCollectionPointService } from "../../services/maps-collection-point
 export class CollectionPointsPage implements OnInit {
   map: GoogleMap;
   routes: any;
+  marker: Marker;
   constructor(
     private geolocation: Geolocation,
     private MapsCollectionPointService: MapsCollectionPointService
@@ -48,9 +51,33 @@ export class CollectionPointsPage implements OnInit {
       });
   }
 
+  tracking() {
+    console.log("entre a tracking");
+    if (this.map) {
+      this.geolocation
+        .getCurrentPosition()
+        .then(resp => {
+          this.latitude = resp.coords.latitude;
+          this.longitude = resp.coords.longitude;
+          console.log(`${resp.coords.latitude} - ${resp.coords.longitude}`);
+          var newPosition = new LatLng(
+            this.latitude,
+            this.longitude
+          );
+
+          this.marker.setPosition(newPosition);
+        })
+        .catch(error => {
+          console.log("Error getting location", error);
+        });
+    }
+  }
+
   ngOnInit() {
     debugger;
     this.locate();
+    const trackingInterval = interval(10000);
+    trackingInterval.subscribe(val => this.tracking());
   }
 
   loadMap() {
@@ -78,7 +105,7 @@ export class CollectionPointsPage implements OnInit {
       this.map.addMarker(markerOptions);
     });
 
-    let marker: Marker = this.map.addMarkerSync({
+    this.marker = this.map.addMarkerSync({
       title: "Mi ubicación",
       icon: "blue",
       animation: "DROP",
@@ -88,7 +115,7 @@ export class CollectionPointsPage implements OnInit {
       }
     });
 
-    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+    this.marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
       alert("clicked");
     });
   }
