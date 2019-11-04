@@ -9,7 +9,6 @@ import { Services } from './services.service';
 export class NewsDownloadService extends Services {
 
   redirectUrl: string;
-
   router: any;
   isLoggedIn = false;
   apiURL: string = '';

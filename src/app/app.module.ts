@@ -11,6 +11,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { GoogleMaps } from "@ionic-native/google-maps";
+
+
 
 
 @NgModule({
@@ -21,6 +24,7 @@ import { Geolocation } from "@ionic-native/geolocation/ngx";
     StatusBar,
     Geolocation,
     SplashScreen,
+    GoogleMaps,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: 'apiUrl',

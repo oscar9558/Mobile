@@ -1,28 +1,32 @@
-import { Injectable } from '@angular/core';
-import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { Injectable, Inject } from "@angular/core";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Services } from "./services.service";
+
 
 @Injectable({
   providedIn: "root"
 })
-export class MapsCollectionPointService {
-  
-  //importar en el constructor el servicio de geolocalizacion
-  constructor(private geolocation: Geolocation) { }
+export class MapsCollectionPointService extends Services {
+  redirectUrl: string;
+  router: any;
+  isLoggedIn = false;
+  apiURL: string = "";
+  headers = this.GetHttpHeaders();
 
-  //declarar dos variables dentro de la clase
-  latitude;
-  longitude;
-
-  //crear un metodo donde se almacena las variables declaradas
-  locate() {
-    this.geolocation
-      .getCurrentPosition()
-      .then(resp => {
-        this.latitude = resp.coords.latitude;
-        this.longitude = resp.coords.longitude;
-      })
-      .catch(error => {
-        console.log("Error getting location", error);
-      });
+  constructor(private http: HttpClient, @Inject("apiUrl") url: string) {
+    super();
+    this.apiURL = url + "api/maps/milkCollection/";
   }
+
+  findPoints(): Observable<any> {
+    return this.http.get<any>(
+      this.apiURL + "getCollectionPoints/" + "oscar@gmail.com",
+      {
+        withCredentials: false,
+        headers: this.headers
+      }
+    );
+  }
+
 }
