@@ -1,3 +1,13 @@
+<ion-header color="Primary">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content padding>
   <div text-center style="margin-top: 50%; padding: 0 7%;">
     <img mat-card-image class="image" src="../../../assets/images/logo.png" alt="Logo">
@@ -5,7 +15,7 @@
   <form #form="ngForm" (ngSubmit)="login(user,password)">
     <div padding>
       <ion-item>
-        <ion-input name="email" type="email" placeholder="correo" [(ngModel)]="user" autocomplete="off" required>
+        <ion-input name="email" type="email" placeholder="Correo" [(ngModel)]="user" autocomplete="off" required>
         </ion-input>
       </ion-item>
       <ion-item>
@@ -15,7 +25,8 @@
     </div>
     <div padding>
       <ion-button size="small" type="submit" [disabled]="form.invalid" expand="block">Iniciar Sesión</ion-button>
-      <ion-button size="small" color="secondary" type="submit" [disabled]="form.invalid" expand="block">Registro</ion-button>
+      <ion-button size="small" color="secondary" type="submit" [disabled]="form.invalid" expand="block">Registro
+      </ion-button>
     </div>
   </form>
 </ion-content>
