@@ -6,7 +6,8 @@ import {
   CameraPosition,
   MarkerOptions,
   Marker,
-  Environment
+  Environment,
+  LatLng
 } from "@ionic-native/google-maps";
 import { Component, OnInit } from "@angular/core";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
@@ -50,7 +51,6 @@ export class CollectionPointsPage implements OnInit {
   ngOnInit() {
     debugger;
     this.locate();
-    
   }
 
   loadMap() {
@@ -69,15 +69,13 @@ export class CollectionPointsPage implements OnInit {
     this.map = GoogleMaps.create("map_canvas", mapOptions);
 
     this.routes.forEach(element => {
-      this.map.addMarkerSync({
-        title: "Ruta",
+      let markerOptions: MarkerOptions = {
+        position: new LatLng(element.y, element.x),
+        title: "mi ruta",
         icon: "red",
-        animation: "DROP",
-        position: {
-          lat: element.x,
-          lng: element.y
-        }
-      });
+        animation: "DROP"
+      };
+      this.map.addMarker(markerOptions);
     });
 
     let marker: Marker = this.map.addMarkerSync({
