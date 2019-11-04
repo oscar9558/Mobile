@@ -28,5 +28,14 @@ export class MapsCollectionPointService extends Services {
       }
     );
   }
+  updatePoints(): Observable<any> {
+    return this.http.get<any>(
+      this.apiURL + "updateTruckerPosition/" + "oscar@gmail.com",
+      {
+        withCredentials: false,
+        headers: this.headers
+      }
+    );
+  }
 
 }
