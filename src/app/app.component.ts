@@ -37,7 +37,7 @@ export class AppComponent {
       {
         title: "Mapas",
         url: "/collection-points",
-        icon: "chatboxes"
+        icon: "map"
       },
     ]
   }

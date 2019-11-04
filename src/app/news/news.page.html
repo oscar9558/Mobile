@@ -1,27 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>news</ion-title>
+<ion-header color="Primary">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Noticias </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ng-container *ngFor="let n of news">
-    <ion-card>
+    <ion-card color="light" style="margin:5%">
       <ion-card-header>
-        <ion-card-title>{{n.title}}</ion-card-title>
-        <ion-card-subtitle>{{n.author}} - {{n.date}}</ion-card-subtitle>
+        <ion-card-title style="font-weight: bold; text-align: center;font-size: 18px;">{{n.title}}</ion-card-title>
+        <ion-card-subtitle>{{n.author}} - {{n.date|date}}</ion-card-subtitle>
       </ion-card-header>
 
-      <ng-container *ngIf="!news.image">
-        <img mat-card-image src="{{image}}">
+      <ng-container *ngIf="!n.image">
+        <img mat-card-image style="width: 50% ;margin:auto" src="{{image}}">
       </ng-container>
-      <ng-container *ngIf="news.image">
-        <img mat-card-image src="{{n.image}}">
+      <ng-container *ngIf="n.image">
+        <img mat-card-image style="width: 50% ;margin:auto" src="{{n.image}}">
       </ng-container>
 
-      <ion-card-content>
+      <ion-card-content style="text-align: justify;">
         {{n.description}}
       </ion-card-content>
+
+      <button mat-button class="button-card" (click)="navigate('newsInspection', news._id)">Ver mas</button>
     </ion-card>
   </ng-container>
 </ion-content>
