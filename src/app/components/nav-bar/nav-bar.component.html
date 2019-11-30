@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <a class="text" routerLink="/news" routerLinkActive="active">Inicio</a>
+        <a class="text" routerLink="/contentManagement" routerLinkActive="active">Material de Interes</a>
+        <a class="text" routerLink="/milkColector" routerLinkActive="active">Recoleccion de Leche</a>
+        <span class="spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" aria-label="notificationsMenu">
+            <mat-icon matBadgeColor="warn"
+                matBadge="{{notificationMessages.length>0?notificationMessages.length:null}}">notifications</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="Profile" (click)="updateImage()">
+            Perfil
+        </button> 
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu #notificationsMenu="matMenu">
+    <div class="notificationsMenu" *ngIf="notificationMessages.length>0">
+        <ng-container *ngFor="let notification of notificationMessages;let i=index">
+            <ng-container *ngIf="!notification.senReaded">
+                <button mat-menu-item (click)="updateNotification(notification)">
+                    <span>Notificacion de {{notification.source}}: {{notification.message}}</span>
+                </button>
+            </ng-container>
+        </ng-container>
+        <a>Ver Todo</a>
+    </div>
+</mat-menu>
+
+
+<mat-menu #profileMenu="matMenu">
+    <div class="profileMenu">
+        <div class="imgcontainer">
+            <img src="{{image}}" alt="Avatar" class="avatar">
+        </div>
+        <p>{{userName}}</p>
+        <button mat-menu-item (click)="userProfile()">
+            <i class="fas fa-user-cog"></i>
+            Configuración
+        </button>
+        <button mat-menu-item class="logout" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            Cerrar Sesión
+        </button>
+    </div>
+</mat-menu>
