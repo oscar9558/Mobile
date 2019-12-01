@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Información Personal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <div class="colgrid1" *ngIf="profileInformation.role!=='Empresa'">
+            <mat-form-field class="full-width">
+                <mat-label>Genero</mat-label>
+                <select matNativeControl [(ngModel)]="gender" (ngModelChange)="gender=$event" name="gender" required>
+                    <ng-container *ngFor="let g of genders">
+                        <option [ngValue]="g">{{g}}</option>
+                    </ng-container>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="colgrid1" *ngIf="profileInformation.role==='Recolector'">
+            <mat-form-field class="full-width">
+                <mat-label>Empresa Asociada</mat-label>
+                <select matNativeControl [(ngModel)]="companyAsociated" (ngModelChange)="companyAsociated=$event"
+                    name="companyAsociated" required>
+                    <ng-container *ngFor="let p of companies">
+                        <option [ngValue]="p.id">{{p.profileInformation.companyName}}</option>
+                    </ng-container>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="colgrid2">
+            <mat-form-field class="full-width">
+                <mat-label>Tipo de Documento</mat-label>
+                <select matNativeControl [(ngModel)]="documentType.id" (ngModelChange)="changeDocumentType($event)"
+                    name="documentType" required>
+                    <ng-container *ngFor="let p of documents">
+                        <option [ngValue]="p.id">{{p.abbreviation +" - "+ p.documentTypeName}}</option>
+                    </ng-container>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="colgrid2">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Número de documento" name="documentNumber" type="documentNumber"
+                    [(ngModel)]="documentNumber" (ngModelChange)="documentNumber=$event" required>
+            </mat-form-field>
+        </div>
+        <div class="colgrid1">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Telefono" name="phone" type="phone" [(ngModel)]="phone"
+                    (ngModelChange)="phone=$event" required>
+            </mat-form-field>
+        </div>
+        <div class="colgrid2">
+            <mat-form-field class="full-width">
+                <mat-label>Departamento</mat-label>
+                <select matNativeControl [(ngModel)]="department.id" (ngModelChange)="changeDeparment($event)"
+                    name="department" required>
+                    <ng-container *ngFor="let p of departments">
+                        <option [ngValue]="p.id">{{p.departmentName}}</option>
+                    </ng-container>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="colgrid2">
+            <mat-form-field class="full-width">
+                <mat-label>Ciudad</mat-label>
+                <select matNativeControl [(ngModel)]="city.id" (ngModelChange)="changeCity($event)" name="city" required>
+                    <ng-container *ngFor="let p of cities">
+                        <option [ngValue]="p.id">{{p.cityName }}</option>
+                    </ng-container>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="colgrid1">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Dirección" name="adress" type="adress" [(ngModel)]="adress"
+                    (ngModelChange)="adress=$event" required>
+            </mat-form-field>
+        </div>
+</ion-content>
