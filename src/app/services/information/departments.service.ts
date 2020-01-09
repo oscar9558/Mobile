@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as departments from "./departments.json";
 
+
 @Injectable({
   providedIn: 'root'
 })
