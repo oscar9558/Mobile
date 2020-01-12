@@ -11,6 +11,11 @@ const routes: Routes = [
   { path: 'profile-information', loadChildren: './user-profile/profile-information/profile-information.module#ProfileInformationPageModule' },
   { path: 'news-inspection', loadChildren: './components/news/news-inspection/news-inspection.module#NewsInspectionPageModule' },
   { path: 'user-profile', loadChildren: './user-profile/user-profile.module#UserProfilePageModule' },
+  { path: 'event-card', loadChildren: './components/events/event-card/event-card.module#EventCardPageModule' },
+  { path: 'event-management', loadChildren: './components/events/event-management/event-management.module#EventManagementPageModule' },
+  { path: 'list-events', loadChildren: './components/events/list-events/list-events.module#ListEventsPageModule' },
+  { path: 'user-events', loadChildren: './components/events/user-events/user-events.module#UserEventsPageModule' },
+  { path: 'events', loadChildren: './components/events/events.module#EventsPageModule' },
 
 ];
 @NgModule({
