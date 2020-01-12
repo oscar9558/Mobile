@@ -1,0 +1,51 @@
+<div class="popup-modal" *ngIf="showPopup">
+    <div class="popup-container" [ngStyle]="calculatePopupPosition()" cdkDrag cdkDragBoundary=".dragDropReference">
+        <div class="popup-header" cdkDragHandle>
+            <h1>Crear Evento</h1>
+            <button (click)="closePopup()" class="popup-button"><i class="far fa-times-circle"></i></button>
+        </div>
+        <div class="popup-content">
+            <div class="colgrid1">
+                <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
+                </agm-map>
+                <p style="font-size: smaller;">*Mueva el marcador para colocar la ubicacion del evento</p>
+            </div>
+            <div class="colgrid2">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Titulo del evento" name="eventTitle" type="text" [(ngModel)]="eventTitle" (ngModelChange)="eventTitle=$event" required>
+                </mat-form-field>
+            </div>
+            <div class="colgrid2">
+                <mat-form-field class="full-width">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="date" (ngModelChange)="date=$event" placeholder="Fecha del Evento">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="colgrid1">
+                <mat-form-field class="full-width">
+                    <textarea matInput placeholder="Descripcion" name="description" [(ngModel)]="description" (ngModelChange)="description=$event"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="colgrid2">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Duracion del evento (mins)" name="duration" type="number" [(ngModel)]="duration" (ngModelChange)="duration=$event" required>
+                </mat-form-field>
+            </div>
+            <div class="colgrid2">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Capacidad de asistentes" name="capacityAttendees" type="number" [(ngModel)]="capacityAttendees" (ngModelChange)="capacityAttendees=$event" required>
+                </mat-form-field>
+            </div>
+            <div class="colgrid1" *ngIf="!edit">
+                <input placeholder="Adjuntar imagen" class="input-file" type="file" [(ngModel)]="image" accept="image/*" (change)="changeListener($event)">
+            </div>
+            <div class="buttonRegister">
+                <button mat-raised-button color="primary" (click)="createEvent()" *ngIf="!edit">Crear Evento</button>
+                <button mat-raised-button color="primary" (click)="editEvent()" *ngIf="edit">Editar Evento</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-alert-popup></app-alert-popup>

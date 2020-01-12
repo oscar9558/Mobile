@@ -3,11 +3,10 @@ import { PermitService } from 'src/app/services/permitService/permit.service';
 
 @Component({
   selector: 'app-events',
-  templateUrl: './events.page.html',
-  styleUrls: ['./events.page.scss'],
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.scss']
 })
-
-export class EventsPage implements OnInit {
+export class EventsComponent implements OnInit {
 
   currentMenu = 'Listado_Eventos';
   consultEvents: boolean;

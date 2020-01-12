@@ -1,0 +1,42 @@
+<mat-card class="card" *ngIf="event.senValid">
+    <mat-card-header>
+        <mat-card-title>{{event.title}}</mat-card-title>
+    </mat-card-header>
+    <ng-container *ngIf="!event.image">
+        <div style="text-align: center;">
+            <img mat-card-image src="../../../../assets/images/warning.svg" class="mat-card-image--size">
+        </div>
+    </ng-container>
+    <ng-container *ngIf="event.image">
+        <div style="text-align: center;">
+            <img mat-card-image src="{{event.image}}" class="mat-card-image--size">
+        </div>
+    </ng-container>
+    <mat-card-content>
+        <div class="mat-container--spaces">
+            <p style="font-size: small;">{{event.description}} </p>
+        </div>
+
+        <div class="mat-container--spaces--50">
+            <mat-icon>event</mat-icon>
+            <p style="display: inline-block; margin-left: 5px;">{{event.date|date}}</p>
+        </div>
+
+        <div class="mat-container--spaces--50">
+            <mat-icon>account_box</mat-icon>
+            <p style="display: inline-block; margin-left: 5px;">cupos: {{event.capacityAttendees-event.numberAttendees +"/" +event.capacityAttendees}} </p>
+        </div>
+
+        <div class="mat-container--spaces">
+            <mat-icon>place</mat-icon>
+            <p style="display: inline-block; margin-left: 5px;">{{address}}</p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center;">
+        <button mat-raised-button color="primary" *ngIf="insideMap && !userEvent && attendEvents && !senUserParticipate" (click)="addEvent()">Asistir</button>
+        <button mat-raised-button color="primary" *ngIf="!insideMap && !ownerEvent && attendEvents" (click)="removeEvent()">Cancelar
+      Asistencia</button>
+        <button mat-raised-button color="primary" *ngIf="!insideMap && !userEvent" (click)="editEventImp()">Editar</button>
+        <button mat-raised-button color="warn" *ngIf="!insideMap && !userEvent" (click)="deleteEvent()">Eliminar</button>
+    </mat-card-actions>
+</mat-card>

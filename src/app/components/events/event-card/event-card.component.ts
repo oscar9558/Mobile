@@ -7,11 +7,12 @@ import { PermitService } from 'src/app/services/permitService/permit.service';
 
 @Component({
   selector: 'app-event-card',
-  templateUrl: './event-card.page.html',
-  styleUrls: ['./event-card.page.scss'],
+  templateUrl: './event-card.component.html',
+  styleUrls: ['./event-card.component.scss',
+    '../../../../assets/gridStyles.css',
+    '../../../../assets/popupStyles.css']
 })
-
-export class EventCardPage implements OnInit {
+export class EventCardComponent implements OnInit {
 
   @Output() editEvent = new EventEmitter<Event>();
   @Output() reloadEvents = new EventEmitter<boolean>();
