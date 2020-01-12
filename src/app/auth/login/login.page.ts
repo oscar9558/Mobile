@@ -22,14 +22,17 @@ export class LoginPage implements OnInit {
 
   constructor(private authService: AuthService,
     private router: Router,
-    private notificationService: NotificationService) { }
+    //TODO: ESTO NO EXISTE!
+    //private notificationService: NotificationService
+    ) { }
 
   ngOnInit() {
   }
 
   login(user, password) {
     if (user && password) {
-      this.notificationService.connect();
+      //TODO: Esto que!
+      //this.notificationService.connect();
       let userRequest = { email: user, password: password };
       this.authService.login(userRequest).subscribe(
         response => {
@@ -47,7 +50,7 @@ export class LoginPage implements OnInit {
           this.authService.setIsLoggedIn(true);
         },
         error => {
-          this.alertPopupComponent.showError(error.error.errorCode);
+          this.alertPopupPage.showError(error.error.errorCode);
         }
       );
     }

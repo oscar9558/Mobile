@@ -1,9 +1,8 @@
 
-import { Component, OnInit, NgZone, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { EventRequest } from 'src/app/models/classes/eventRequest';
 import { EventsService } from 'src/app/services/eventServices/events.service';
-import { Event } from 'src/app/models/classes/eventClass';
 
 @Component({
   selector: 'app-create-edit-event',
