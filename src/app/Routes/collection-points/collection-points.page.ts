@@ -27,7 +27,7 @@ export class CollectionPointsPage implements OnInit {
   constructor(
     private geolocation: Geolocation,
     private MapsCollectionPointService: MapsCollectionPointService
-  ) {}
+  ) { }
 
   //declarar dos variables dentro de la clase
   latitude;
@@ -41,7 +41,6 @@ export class CollectionPointsPage implements OnInit {
         this.latitude = resp.coords.latitude;
         this.longitude = resp.coords.longitude;
         this.MapsCollectionPointService.findPoints().subscribe(res => {
-          debugger;
           this.routes = res;
           this.loadMap();
         });
@@ -74,7 +73,6 @@ export class CollectionPointsPage implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
     this.locate();
     const trackingInterval = interval(10000);
     trackingInterval.subscribe(val => this.tracking());
@@ -91,7 +89,6 @@ export class CollectionPointsPage implements OnInit {
         tilt: 30
       }
     };
-    debugger;
 
     this.map = GoogleMaps.create("map_canvas", mapOptions);
 

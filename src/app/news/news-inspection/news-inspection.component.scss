@@ -1,0 +1,14 @@
+
+.img-container{width:94%;margin:12px}
+
+.card{
+    &-title{
+        text-align: center;
+    }
+    &-description{
+        text-align: justify;
+    } 
+    &-content{
+        text-align: justify;
+    }
+}

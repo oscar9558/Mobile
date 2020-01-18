@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsDownloadService } from '../services/newsDownload.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -10,13 +11,24 @@ export class NewsPage implements OnInit {
 
   news;
   image: string = "../../../assets/images/picture.svg";
-  constructor(private newsService: NewsDownloadService) { }
+  constructor(private newsService: NewsDownloadService,
+    private router:Router) { }
 
   ngOnInit() {
-    this.newsService.findAllNews().subscribe(res => {
-      this.news=res;
-    }
-    )
+    this.getNews();
   }
+
+  getNews() {
+    this.newsService.findAllNews().subscribe(
+      response => {
+        this.news = response;
+      },
+    );
+  }
+
+  navigate(route, id) {
+    this.router.navigate([this.router.url, route, id])
+  }
+  
 
 }

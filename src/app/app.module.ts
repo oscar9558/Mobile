@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { GoogleMaps } from "@ionic-native/google-maps";
+import { LoginPageModule } from './auth/login/login.module';
 
 
 
@@ -25,6 +26,7 @@ import { GoogleMaps } from "@ionic-native/google-maps";
     Geolocation,
     SplashScreen,
     GoogleMaps,
+    LoginPageModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: 'apiUrl',
