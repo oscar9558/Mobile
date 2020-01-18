@@ -1,0 +1,44 @@
+<ion-list>
+    <ion-list-header>{{titlePopup}}</ion-list-header>
+    <ion-item>
+        <ion-label>Recolector</ion-label>
+        <ion-select matNativeControl [(ngModel)]="collector" (ngModelChange)="collector=$event" name="collector"
+            required>
+            <ng-container *ngFor="let c of collectors">
+                <ion-select-option [value]="c.accountInformation.username">
+                    {{c.profileInformation.firstName +" "+ c.profileInformation.surname}}
+                </ion-select-option>
+            </ng-container>
+        </ion-select>
+    </ion-item>
+</ion-list>
+<ion-button size="small" expand="block" (click)="assigneeCollector()">{{titlePopup}}</ion-button>
+
+
+<!-- <div class="popup-modal" *ngIf="showPopup">
+    <div class="popup-container" [ngStyle]="calculatePopupPosition()" cdkDrag cdkDragBoundary=".dragDropReference">
+        <div class="popup-header" cdkDragHandle>
+            <h1>{{titlePopup}}</h1>
+            <button (click)="closePopup()" class="popup-button"><i class="far fa-times-circle"></i></button>
+        </div>
+        <div class="popup-content">
+
+            <div class="colgrid1">
+                <mat-form-field class="full-width">
+                    <mat-label>Recolector</mat-label>
+                    <select matNativeControl [(ngModel)]="collector" (ngModelChange)="collector=$event" name="collector"
+                        required>
+                        <ng-container *ngFor="let c of collectors">
+                            <option [ngValue]="c.accountInformation.username">
+                                {{c.profileInformation.firstName +" "+ c.profileInformation.surname}}</option>
+                        </ng-container>
+                    </select>
+                </mat-form-field>
+            </div>
+
+            <div class="buttonRegister">
+                <button mat-raised-button color="primary" (click)="assigneeCollector()">{{titlePopup}}</button>
+            </div>
+        </div>
+    </div>
+</div> -->

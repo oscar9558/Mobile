@@ -1,0 +1,97 @@
+<ion-header color="Primary">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Recolección de Leche </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title style="font-weight: bold; text-align: center;font-size: 18px;">Solicitudes de Recolección de
+                leche
+            </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content *ngIf="requests">
+            <ion-item *ngFor="let request of requests">
+                <ion-label>
+
+                    <p>
+                        <span style="font-weight:bold;">Fecha:</span> {{request.date|date:'dd/MM/yyyy'}}
+                    </p>
+                    <p>
+                        <span style="font-weight:bold;">Ganadero:</span>
+                        {{request.farmer.profileInformation.firstName + " "+ request.farmer.profileInformation.surname }}
+                    </p>
+                    <p>
+                        <span style="font-weight:bold;">Dirección:</span>
+                        {{request.farmer.profileInformation.adress}}
+                    </p>
+                    <p>
+                        <span style="font-weight:bold;">Estado de la solicitud:</span>
+                        {{request.senAssigned?'Completa':'Pendiente'}}
+                    </p>
+                    <p>
+                        <span style="font-weight:bold;">Recolector Asignado:</span>
+                        {{request.trucker?request.trucker.profileInformation.firstName + " "+ request.trucker.profileInformation.surname:'No asignado'}}
+                    </p>
+                </ion-label>
+                <ion-button size="small" (click)="presentPopover($event,request)" *ngIf="!request.senAssigned">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-button>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<!-- <mat-card class="register-collection-card">
+    <mat-card-header>
+        <mat-card-title>Solicitudes de Recolección de leche</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table class="content-container">
+            <thead>
+                <tr>
+                    <th> Fecha </th>
+                    <th> Ganadero </th>
+                    <th> Dirección </th>
+                    <th> Estado de la solicitud </th>
+                    <th> Recolector Asignado </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let request of requests">
+                    <tr>
+                        <td>{{request.farmer.profileInformation.adress}}</td>
+                        <td> {{request.senAssigned?'Completa':'Pendiente'}} </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button *ngIf="!request.senAssigned" mat-icon-button [matMenuTriggerFor]="menu"
+                                [matMenuTriggerData]="{request: request}" aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <app-assign-collector (reloadData)="reloadData()"></app-assign-collector>
+    </mat-card-content>
+</mat-card>
+
+<mat-menu #menu="matMenu">
+    <ng-template matMenuContent let-request="request">
+        <button mat-menu-item (click)="showAssignCollector(request)">
+            <mat-icon>add</mat-icon>
+            <span>Asignar Conductor</span>
+        </button>
+    </ng-template>
+</mat-menu>
+
+
+<app-alert-popup></app-alert-popup> -->

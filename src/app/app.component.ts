@@ -26,10 +26,6 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-  click() {
-    console.log("click")
-    this.splashScreen.show();
-  }
 
   sideMenu() {
     this.navigate = [
@@ -58,7 +54,7 @@ export class AppComponent {
           },
           {
             title: "Solicitudes de recolección",
-            url: "",
+            url: "milk-colection/request-list",
             icon: "pricetags"
           },
           {
