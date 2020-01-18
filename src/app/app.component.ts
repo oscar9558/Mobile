@@ -35,6 +35,11 @@ export class AppComponent {
         icon: "book"
       },
       {
+        title: "Documentos y Enlaces",
+        url: "/content-management",
+        icon: "document"
+      },
+      {
         title: "Mapas",
         url: "/collection-points",
         icon: "map"

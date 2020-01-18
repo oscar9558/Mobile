@@ -1,0 +1,24 @@
+<ion-header color="Primary">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Documentos y Enlaces </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ng-container *ngIf="content">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title style="font-weight: bold; text-align: center;font-size: 18px;">{{content.title}}
+                </ion-card-title>
+                <ion-card-subtitle>{{content.author}} - {{content.date|date}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                <pdf-viewer [show-all]="true" [original-size]="false" [zoom]="1.0" [src]="content.document"
+                    [render-text]="true" style="display: block;">
+                </pdf-viewer>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+</ion-content>

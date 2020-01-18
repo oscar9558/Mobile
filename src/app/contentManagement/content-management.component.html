@@ -1,0 +1,27 @@
+<ion-header color="Primary">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Documentos y Enlaces </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ng-container *ngFor="let c of content">
+            <ion-item>
+                <ion-avatar slot="start">
+                    <ion-icon *ngIf="c.type!=='Video'" name="document" style="font-size: 40px;"></ion-icon>
+                    <ion-icon *ngIf="c.type==='Video'" name="videocam" style="font-size: 40px;"></ion-icon>
+                </ion-avatar>
+                <ion-label>
+                    <h1> {{c.title}}</h1>
+                    <h2> {{c.author}}</h2>
+                    <h3> {{c.date | date:'dd/MM/yyyy'}}</h3>
+                </ion-label>
+                <ion-button slot="end" (click)="inspectContent(c)">Ver contenido</ion-button>
+            </ion-item>
+        </ng-container>
+    </ion-list>
+</ion-content>
