@@ -7,6 +7,17 @@
     </ion-header>
 
     <ion-content color="light">
+
+      <ion-item color="light">
+        <ion-avatar slot="start">
+          <img [src]="image">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{userName}}</h2>
+          <a style="font-size: small;" routerLink="configuration">Configuracion</a>
+        </ion-label>
+      </ion-item>
+
       <ion-list *ngFor="let page of navigate">
 
         <ion-menu-toggle *ngIf="page.url">
@@ -23,7 +34,7 @@
           <ion-label>{{page.title}}</ion-label>
         </ion-item>
 
-        <ion-list  *ngIf="page.open">
+        <ion-list *ngIf="page.open">
           <ion-menu-toggle *ngFor="let sub of page.children">
             <ion-item class="sub-item" [routerLink]="sub.url" routerDirection="root" routerLinkActive="active">
               <ion-icon [name]="sub.icon" slot="start"></ion-icon>

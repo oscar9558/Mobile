@@ -11,6 +11,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   navigate: any[];
+  userName: any;
+  image: any = "../assets/images/user.svg";
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -25,19 +28,47 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    let map = new Map(JSON.parse(sessionStorage.getItem('userPermits')));
+    this.userName = map.keys().next().value;
+    let profileInfo = JSON.parse(sessionStorage.getItem('profileInformation'));
+    if (profileInfo.image) {
+      this.image = profileInfo.image;
+    }
   }
+
 
   sideMenu() {
     this.navigate = [
       {
-        title: "Noticias",
-        url: "/news",
-        icon: "book"
-      },
-      {
         title: "Documentos y Enlaces",
         url: "/content-management",
         icon: "document"
+      },
+      {
+        title: "Eventos",
+        children: [
+          {
+            title: "Listado de Eventos",
+            url: "",
+            icon: "calendar"
+          },
+          {
+            title: "Mis eventos",
+            url: "",
+            icon: "checkbox-outline"
+          },
+          {
+            title: "Administración de Eventos",
+            url: "",
+            icon: "clipboard"
+          }
+        ],
+      },
+      {
+        title: "Noticias",
+        url: "/news",
+        icon: "book"
       },
       {
         title: "Recolección de Leche",
