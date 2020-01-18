@@ -13,7 +13,6 @@ import { Component, OnInit } from "@angular/core";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { MapsCollectionPointService } from "../../services/maps-collection-point.service";
 import { interval } from "rxjs";
-import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-collection-points",

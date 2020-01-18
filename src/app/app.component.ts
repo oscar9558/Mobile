@@ -59,7 +59,7 @@ export class AppComponent {
           },
           {
             title: "Ubicacion Recolector",
-            url: "",
+            url: "milk-colection/tracking",
             icon: "compass"
           },
           {

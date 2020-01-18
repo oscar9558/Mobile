@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { MilkCollectionRequestComponent } from './milk-collection-request/milk-collection-request.component';
 import { MilkCollectionRequestCompanyComponent } from './milk-collection-request-company/milk-collection-request-company.component';
 import { AssignCollectorComponent } from './milk-collection-request-company/assign-driver/assign-collector.component';
+import { MilkCollectionTrakingComponent } from './milk-collection-traking/milk-collection-traking.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
     path: 'request-list',
     component: MilkCollectionRequestCompanyComponent
   },
+  {
+    path: 'tracking',
+    component: MilkCollectionTrakingComponent
+  }
 ];
 
 @NgModule({
@@ -29,13 +34,15 @@ const routes: Routes = [
     RegisterColectionComponent,
     MilkCollectionRequestComponent,
     MilkCollectionRequestCompanyComponent,
-    AssignCollectorComponent
+    AssignCollectorComponent,
+    MilkCollectionTrakingComponent
   ],
   exports: [
     RegisterColectionComponent,
     MilkCollectionRequestComponent,
     MilkCollectionRequestCompanyComponent,
-    AssignCollectorComponent
+    AssignCollectorComponent,
+    MilkCollectionTrakingComponent
   ],
   entryComponents: [
     AssignCollectorComponent

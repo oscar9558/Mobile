@@ -1,0 +1,31 @@
+<ion-header color="Primary">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Recolección de Leche </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title style="font-weight: bold; text-align: center;font-size: 18px;">Ubicacion del recolector
+                Asignado
+            </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ng-container *ngIf="requestAssigned">
+                <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="false"></agm-marker>
+                    <agm-marker [latitude]="latitudeTrucker" [longitude]="longitudeTrucker" [markerDraggable]="false">
+                    </agm-marker>
+                </agm-map>
+            </ng-container>
+            <ng-container *ngIf="!requestAssigned">
+                <p>Su solicitud aun no tiene un recolector asignado, por favor intente despues.</p>
+            </ng-container>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
