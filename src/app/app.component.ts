@@ -48,7 +48,7 @@ export class AppComponent {
         children:[
           {
             title: "Formulario Recolección",
-            url: "",
+            url: "milk-colection/register-colection",
             icon: "information-circle-outline"
           },
           {

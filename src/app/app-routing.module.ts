@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' },
   { path: 'news', loadChildren: './news/news.module#NewsPageModule' },
   { path: 'content-management', loadChildren: './contentManagement/content-management.module#ContentManagementModule' },
+  { path: 'milk-colection', loadChildren: './milkCollection/milk-colector.module#MilkColectorModule' },
   { path: 'collection-points', loadChildren: './Routes/collection-points/collection-points.module#CollectionPointsPageModule' },
 
 ];

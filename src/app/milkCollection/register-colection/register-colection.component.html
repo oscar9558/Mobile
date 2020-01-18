@@ -1,0 +1,45 @@
+<ion-header color="Primary">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Recolección de Leche </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title style="font-weight: bold; text-align: center;font-size: 18px;">Formulario de recolección de
+                leche</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Empresa recolectora</ion-label>
+                <ion-select matNativeControl [(ngModel)]="milkCompany" (ngModelChange)="milkCompany=$event"
+                    name="milkCompany" required>
+                    <ng-container *ngFor="let company of companies">
+                        <ion-select-option [value]="company.id">{{company.profileInformation.companyName}}
+                        </ion-select-option>
+                    </ng-container>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Dirección de recolección</ion-label>
+                <ion-input matInput class="form-control" (keydown.enter)="$event.preventDefault()" [(ngModel)]="address"
+                    (ngModelChange)="address=$event" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
+                </ion-input>
+            </ion-item>
+
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                    (dragEnd)="markerDragEnd($event)"></agm-marker>
+            </agm-map>
+            <div style="text-align: center; margin-top: 5px;">
+                <ion-button (click)="createRequest()">Crear petición</ion-button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
