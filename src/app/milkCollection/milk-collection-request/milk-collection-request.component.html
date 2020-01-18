@@ -1,0 +1,41 @@
+<ion-header color="Primary">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Recolección de Leche </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title style="font-weight: bold; text-align: center;font-size: 18px;">Informacion de la solicitud
+            </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content *ngIf="request">
+            <ion-item>
+                <ion-label>
+                    <span style="font-weight:bold;">Fecha:</span> {{request.date|date:'dd/MM/yyyy'}}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <span style="font-weight:bold;">Empresa:</span> {{request.company.profileInformation.companyName}}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <span style="font-weight:bold;">Estado de la solicitud:</span> {{!request.senAssigned?'Pendiente':'Completa'}}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <span style="font-weight:bold;">Recolector asignado:</span>
+                    {{request.trucker?request.trucker.profileInformation.firstName + " "+ request.trucker.profileInformation.surname:'No asignado'}}
+                </ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

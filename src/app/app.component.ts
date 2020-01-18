@@ -26,7 +26,7 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-  click(){
+  click() {
     console.log("click")
     this.splashScreen.show();
   }
@@ -45,7 +45,7 @@ export class AppComponent {
       },
       {
         title: "Recolección de Leche",
-        children:[
+        children: [
           {
             title: "Formulario Recolección",
             url: "milk-colection/register-colection",
@@ -53,7 +53,7 @@ export class AppComponent {
           },
           {
             title: "Estado de Solicitud",
-            url: "",
+            url: "milk-colection/farmer-request",
             icon: "help"
           },
           {
