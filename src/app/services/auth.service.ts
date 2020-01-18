@@ -10,16 +10,13 @@ import { Services } from './services.service';
 export class AuthService extends Services {
   redirectUrl: string;
 
- isLoggedIn = false;
   apiURL: string = '';
   headers = this.GetHttpHeaders();
 
-  constructor(private router:Router,private http: HttpClient, @Inject('apiUrl') url: string) {
+  constructor(private router: Router, private http: HttpClient, @Inject('apiUrl') url: string) {
     super();
     this.apiURL = url + 'api/core/';
-    this.isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
   }
-
 
   login(usuario): Observable<any> {
     return this.http.post<any>(
@@ -31,11 +28,7 @@ export class AuthService extends Services {
 
   logout(): void {
     sessionStorage.setItem('isLoggedIn', 'false');
-    this.isLoggedIn = false;
     this.router.navigate(['/login']);
   }
 
-  setIsLoggedIn(loggendIn: boolean) {
-    this.isLoggedIn = loggendIn;
-  }
 }
