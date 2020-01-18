@@ -10,7 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  navigate: { title: string; url: string; icon: string; }[];
+  navigate: any[];
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -26,6 +26,10 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+  click(){
+    console.log("click")
+    this.splashScreen.show();
+  }
 
   sideMenu() {
     this.navigate = [
@@ -40,9 +44,34 @@ export class AppComponent {
         icon: "document"
       },
       {
-        title: "Mapas",
-        url: "/collection-points",
-        icon: "map"
+        title: "Recolección de Leche",
+        children:[
+          {
+            title: "Formulario Recolección",
+            url: "",
+            icon: "information-circle-outline"
+          },
+          {
+            title: "Estado de Solicitud",
+            url: "",
+            icon: "help"
+          },
+          {
+            title: "Solicitudes de recolección",
+            url: "",
+            icon: "pricetags"
+          },
+          {
+            title: "Ubicacion Recolector",
+            url: "",
+            icon: "compass"
+          },
+          {
+            title: "Ruta de Recolección",
+            url: "/collection-points",
+            icon: "map"
+          }
+        ]
       },
     ]
   }
