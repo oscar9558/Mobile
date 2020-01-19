@@ -1,0 +1,56 @@
+<ion-header color="primary">
+    <ion-toolbar color="primary">
+        <ion-icon name="arrow-back" (click)="back()" style="margin-left: 5px; font-size: 25px;"></ion-icon>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header *ngIf="!editar">Crear Evento</ion-card-header>
+        <ion-card-header *ngIf="editar">Editar Evento</ion-card-header>
+        <ion-card-content>
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                    (dragEnd)="markerDragEnd($event)"></agm-marker>
+            </agm-map>
+            <p style="font-size: smaller;">*Mueva el marcador para colocar la ubicacion del evento</p>
+        </ion-card-content>
+
+        <ion-item>
+            <ion-label position="floating">Titulo del evento</ion-label>
+            <ion-input matInput class="form-control" name="eventTitle" type="text" [(ngModel)]="eventTitle"
+                (ngModelChange)="eventTitle=$event" required>
+            </ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Descripción</ion-label>
+            <ion-textarea name="description" [(ngModel)]="description" (ngModelChange)="description=$event">
+            </ion-textarea>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Fecha del Evento</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" [(ngModel)]="date" (ngModelChange)="date=$event">
+            </ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Duración del evento (mins)</ion-label>
+            <ion-input matInput class="form-control" name="duration" type="number" [(ngModel)]="duration"
+                (ngModelChange)="duration=$event" required>
+            </ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Capacidad de asistentes</ion-label>
+            <ion-input matInput class="form-control" name="capacityAttendees" type="number"
+                [(ngModel)]="capacityAttendees" (ngModelChange)="capacityAttendees=$event" required>
+            </ion-input>
+        </ion-item>
+
+        <ion-button (click)="createEvent()" *ngIf="!edit">Crear Evento</ion-button>
+        <ion-button (click)="editEvent()" *ngIf="edit">Editar Evento</ion-button>
+
+    </ion-card>
+</ion-content>

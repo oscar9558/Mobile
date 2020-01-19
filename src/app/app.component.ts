@@ -50,17 +50,17 @@ export class AppComponent {
         children: [
           {
             title: "Listado de Eventos",
-            url: "",
+            url: "events/list-events",
             icon: "calendar"
           },
           {
             title: "Mis eventos",
-            url: "",
+            url: "events/user-events",
             icon: "checkbox-outline"
           },
           {
             title: "Administración de Eventos",
-            url: "",
+            url: "events/event-management",
             icon: "clipboard"
           }
         ],

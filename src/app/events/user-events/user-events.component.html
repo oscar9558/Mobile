@@ -1,0 +1,24 @@
+<ion-header color="Primary">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Eventos </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="font-weight: bold; text-align: center;font-size: 18px;">Mis Eventos
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ng-container *ngFor="let event of events">
+        <app-event-card [event]="event" [userEvent]="true" (editEvent)="editEvent($event)"
+          (reloadEvents)="reloadEvents()"></app-event-card>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

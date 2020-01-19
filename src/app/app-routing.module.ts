@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'news', loadChildren: './news/news.module#NewsPageModule' },
   { path: 'content-management', loadChildren: './contentManagement/content-management.module#ContentManagementModule' },
   { path: 'milk-colection', loadChildren: './milkCollection/milk-colector.module#MilkColectorModule' },
+  { path: 'events', loadChildren: './events/events.module#EventsModule' },
   { path: 'collection-points', loadChildren: './Routes/collection-points/collection-points.module#CollectionPointsPageModule' },
 
 ];
