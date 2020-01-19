@@ -23,6 +23,7 @@ export class ListEventsComponent implements OnInit {
 
   @ViewChild('search', { read: ElementRef, static: true })
   public searchElementRef: ElementRef;
+
   address: string;
   eventsWithUser: any;
 
@@ -41,20 +42,6 @@ export class ListEventsComponent implements OnInit {
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 15;
-        });
-      });
     });
   }
 
@@ -80,7 +67,7 @@ export class ListEventsComponent implements OnInit {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
       if (status === 'OK') {
         if (results[0]) {
-          this.zoom = 20;
+          this.zoom = 14;
           this.address = results[0].formatted_address;
         }
       }
@@ -95,7 +82,25 @@ export class ListEventsComponent implements OnInit {
       },
       radiusDistance: Math.round(this.radius / 1000)
     } as NearestEvents
-    sessionStorage.setItem("Distance", JSON.stringify(distance));
-    this.router.navigate(['events/list-events/map'])
+    this.eventService.nearestEvents(distance).subscribe(res => {
+      this.events = res;
+    });
+  }
+
+  openedWindow: number = 0;
+
+  openWindow(id) {
+    this.openedWindow = id;
+  }
+
+  isInfoWindowOpen(id) {
+    return this.openedWindow == id;
+  }
+
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'km';
+    }
+    return value;
   }
 }

@@ -16,18 +16,22 @@
 
     <ion-card-content>
       <ion-item>
-        <ion-label position="floating">Ubicación del Evento a Buscar</ion-label>
-        <ion-input matInput class="form-control" (keydown.enter)="$event.preventDefault()" [(ngModel)]="address"
-          (ngModelChange)="address=$event" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
-        </ion-input>
-      </ion-item>
-      <ion-item>
         <ion-range min="1000" max="10000" snaps="true" step="1000" [(ngModel)]="radius">
           <ion-label slot="start">1000 mts</ion-label>
           <ion-label slot="end">10000 mts</ion-label>
         </ion-range>
+        <ion-button (click)="findEvents()" expand="block">Buscar</ion-button>
       </ion-item>
-      <ion-button (click)="findEvents()" expand="block">Buscar</ion-button>
+      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+        <agm-marker *ngFor="let event of events" [latitude]="event.event.place.latitude"
+          [longitude]="event.event.place.longitude" [markerClickable]="true" (markerClick)="openWindow(event._id)">
+          <agm-info-window [isOpen]="isInfoWindowOpen(event._id)" [latitude]="event.event.place.latitude"
+            [longitude]="event.event.place.longitude">
+            <app-event-card [eventWithUsers]="event" [insideMap]="true"></app-event-card>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
 
     </ion-card-content>
 

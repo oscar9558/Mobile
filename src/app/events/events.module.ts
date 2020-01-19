@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ListEventsComponent } from './list-events/list-events.component';
 import { EventsService } from '../services/events.service';
-import { ListEventsMapComponent } from './list-events/list-events-map/list-events-map.component';
 import { EventManagement } from './event-management/event-management.component';
 import { EventCardComponent } from './event-card/event-card.component';
 import { CreateEditEventComponent } from './event-management/create-edit-event/create-edit-event.component';
@@ -16,10 +15,6 @@ const routes: Routes = [
   {
     path: 'list-events',
     component: ListEventsComponent
-  },
-  {
-    path: 'list-events/map',
-    component: ListEventsMapComponent
   },
   {
     path: 'user-events',
@@ -38,7 +33,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ListEventsComponent,
-    ListEventsMapComponent,
     EventCardComponent,
     EventManagement,
     CreateEditEventComponent,
@@ -46,7 +40,6 @@ const routes: Routes = [
   ],
   exports: [
     ListEventsComponent,
-    ListEventsMapComponent,
     EventManagement,
     EventCardComponent,
     CreateEditEventComponent,
