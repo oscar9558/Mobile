@@ -20,7 +20,7 @@
                     <h2> {{c.author}}</h2>
                     <h3> {{c.date | date:'dd/MM/yyyy'}}</h3>
                 </ion-label>
-                <ion-button slot="end" (click)="inspectContent(c)">Ver contenido</ion-button>
+                <ion-button slot="end" (click)="inspectContent(c)" *ngIf="download">Ver contenido</ion-button>
             </ion-item>
         </ng-container>
     </ion-list>

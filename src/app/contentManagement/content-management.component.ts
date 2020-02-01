@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ContentManagementService } from '../services/content-management.service';
+import { PermitService } from '../services/permit.service';
 
 @Component({
   selector: 'app-content-management',
@@ -12,14 +13,16 @@ export class ContentManagementComponent implements OnInit {
 
   userName: any;
   content: any;
-  upload: boolean;
   download: boolean;
-
 
   constructor(
     private contentManagementService: ContentManagementService,
     private router: Router,
-  ) { }
+    permitService: PermitService
+  ) {
+    const permits = permitService.getPermitsMap();
+    this.download = permits["CONTENT_DOWNLOAD"];
+  }
 
   ngOnInit() {
     this.getContent();
