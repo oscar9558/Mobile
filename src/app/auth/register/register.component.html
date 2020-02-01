@@ -1,0 +1,83 @@
+<ion-header color="Primary">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back" (click)="back()" style="margin-left: 5px; font-size: 25px;"></ion-icon>
+    </ion-buttons>
+    <ion-title> Registro </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label>Perfil</ion-label>
+        <ion-select matNativeControl [(ngModel)]="role" (ngModelChange)="role=$event" name="role" required>
+          <ng-container *ngFor="let p of profiles">
+            <ion-select-option [value]="p">{{p}} </ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="role==='Empresa'">
+        <ion-label position="floating">Nombre de la empresa</ion-label>
+        <ion-input matInput name="companyName" type="text" [(ngModel)]="companyName"
+          (ngModelChange)="companyName=$event" required>
+        </ion-input>
+      </ion-item>
+
+      <ng-container *ngIf="role!=='Empresa'">
+
+        <ion-item>
+          <ion-label position="floating">Primer Nombre</ion-label>
+          <ion-input matInput name="firstName" type="text" [(ngModel)]="firstName" (ngModelChange)="firstName=$event"
+            required>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Segundo Nombre</ion-label>
+          <ion-input matInput name="secondName" type="text" [(ngModel)]="secondName"
+            (ngModelChange)="secondName=$event">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Primer Apellido</ion-label>
+          <ion-input matInput name="surname" type="text" [(ngModel)]="surname" (ngModelChange)="surname=$event"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Segundo Apellido</ion-label>
+          <ion-input matInput name="secondSurname" type="text" [(ngModel)]="secondSurname"
+            (ngModelChange)="secondSurname=$event">
+          </ion-input>
+        </ion-item>
+      </ng-container>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input matInput name="email" type="email" [(ngModel)]="email" (ngModelChange)="email=$event" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input matInput name="password" type="password" [(ngModel)]="password" (ngModelChange)="password=$event"
+          required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Repita la Contraseña</ion-label>
+        <ion-input matInput name="passwordValidation" type="password" [(ngModel)]="passwordValidation"
+          (ngModelChange)="passwordValidation=$event" required>
+        </ion-input>
+      </ion-item>
+
+    </ion-card-content>
+    <ion-button (click)="register()" expand="block">Registro</ion-button>
+
+
+  </ion-card>
+</ion-content>

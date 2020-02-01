@@ -15,7 +15,7 @@
     </div>
     <div padding>
       <ion-button size="small" type="submit" [disabled]="form.invalid" expand="block">Iniciar Sesión</ion-button>
-      <ion-button size="small" color="secondary" type="submit" [disabled]="form.invalid" expand="block">Registro
+      <ion-button size="small" color="secondary" (click)="register()" expand="block">Registro
       </ion-button>
     </div>
   </form>
