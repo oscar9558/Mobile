@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { PermitService } from './services/permit.service';
+import { Platform } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './services/auth.service';
+import { PermitService } from './services/permit.service';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +18,16 @@ export class AppComponent {
   permits;
 
   constructor(
-    public auth:AuthService,
+    public auth: AuthService,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    permitService: PermitService) {
+    permitService: PermitService,
+    private translate: TranslateService) {
+    translate.setDefaultLang('es');
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/es/) ? browserLang : 'es');
+
     this.permits = permitService.getPermitsMap();
     this.sideMenu();
     this.initializeApp();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { AlertMessageService } from 'src/app/services/alertMessage.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   constructor(private userService: UserService,
-    private router: Router) { }
+    private router: Router,
+    private alertMessageService:AlertMessageService ) { }
 
   profiles = ['Ganadero', 'Alcalde', 'Gobernador', 'Empresa', 'Recolector', 'Veterinario'];
   role = 'Ganadero';
@@ -42,19 +44,18 @@ export class RegisterComponent implements OnInit {
           response => {
             if (response === null) {
               this.back();
-              //this.alertPopupComponent.showSuccess("successRegistration");
-              //this.closePopup();
+              this.alertMessageService.presentSuccess("Registro Exitoso","","successRegistration",["Aceptar"])
             }
           },
           error => {
-            //this.alertPopupComponent.showError(error.error.errorCode);
+            this.alertMessageService.presentError("Registro Fallido","",error.error,["Aceptar"])
           }
-        );
+          );
+        } else {
+          this.alertMessageService.presentError("Registro Fallido","","002",["Aceptar"])
+        }
       } else {
-        //this.alertPopupComponent.showError('002');
-      }
-    } else {
-      //this.alertPopupComponent.showError('incompleteData');
+        this.alertMessageService.presentError("Registro Fallido","","incompleteData",["Aceptar"])
     }
   }
 

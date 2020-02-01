@@ -1,0 +1,21 @@
+{
+    "codeError":{
+      "001":"No es posible registrar el usuario porque ya existe.",
+      "002":"Las contraseñas ingresadas no son iguales.",
+      "003":"El usuario no existe.",
+      "004":"Contraseña incorrecta.",
+      "005":"El evento no tiene cupos disponibles",
+      "006":"Usted ya esta participando del evento",
+      "007":"Esta funcionalidad no esta disponible",
+      "008":"Esta funcionalidad no esta disponible",
+      "009":"Esta funcionalidad no esta disponible",
+      "010":"Esta funcionalidad no esta disponible",
+      "011":"Esta funcionalidad no esta disponible",
+      "incompleteData":"Tiene campos pendientes por diligenciar en el formulario.",
+      "notLocationTrucker":"El recolector de leche no tiene habilitada su ubicación de gps, por favor intente mas tarde."
+    },
+    "codeSuccess":{
+     "successRegistration":"Se ha registrado el usuario satisfactoriamente",
+     "sucessMilkRequest":"Se ha creado la solicitud de recolección de leche"
+    }
+  }
