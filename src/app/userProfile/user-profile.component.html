@@ -1,0 +1,22 @@
+<ion-header color="Primary">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Perfil de usuario </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide>
+            <app-profile-information [profileInformation]="profileInformation" style="width: 100%;">
+            </app-profile-information>
+        </ion-slide>
+        <ion-slide>
+            <app-personal-information [profileInformation]="profileInformation" style="width: 100%;"
+                (saveEmmiter)="save()">
+            </app-personal-information>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

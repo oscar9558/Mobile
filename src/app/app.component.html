@@ -8,15 +8,17 @@
 
     <ion-content color="light">
 
-      <ion-item color="light">
-        <ion-avatar slot="start">
-          <img [src]="image">
-        </ion-avatar>
-        <ion-label>
-          <h2>{{userName}}</h2>
-          <a style="font-size: small;" routerLink="configuration">Configuracion</a>
-        </ion-label>
-      </ion-item>
+      <ion-menu-toggle>
+        <ion-item color="light">
+          <ion-avatar slot="start">
+            <img [src]="image">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{userName}}</h2>
+            <a style="font-size: small;" routerLink="userProfile">Editar Perfil</a>
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
 
       <ion-list *ngFor="let page of navigate">
 
@@ -43,9 +45,13 @@
           </ion-menu-toggle>
         </ion-list>
 
-
       </ion-list>
-
+      <ion-menu-toggle>
+        <ion-item>
+          <ion-button color="danger" expand="block" (click)="auth.logout()" style="margin: auto;">Cerrar Sesión
+          </ion-button>
+        </ion-item>
+      </ion-menu-toggle>
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="content1"></ion-router-outlet>

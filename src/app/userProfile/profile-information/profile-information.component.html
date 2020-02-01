@@ -1,0 +1,49 @@
+<ion-card>
+    <ion-card-content>
+        <ion-avatar style="width: 30%;height: 30%;display: inline-block;">
+            <img src="{{image}}" >
+        </ion-avatar>
+
+        <ion-item *ngIf="role==='Empresa'">
+            <ion-label position="floating">Nombre de la empresa</ion-label>
+            <ion-input matInput name="companyName" type="text" [(ngModel)]="companyName"
+                (ngModelChange)="companyName=$event" required>
+            </ion-input>
+        </ion-item>
+
+        <ng-container *ngIf="role!=='Empresa'">
+
+            <ion-item>
+                <ion-label position="floating">Primer Nombre</ion-label>
+                <ion-input matInput name="firstName" type="text" [(ngModel)]="firstName"
+                    (ngModelChange)="firstName=$event" required>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Segundo Nombre</ion-label>
+                <ion-input matInput name="secondName" type="text" [(ngModel)]="secondName"
+                    (ngModelChange)="secondName=$event">
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Primer Apellido</ion-label>
+                <ion-input matInput name="surname" type="text" [(ngModel)]="surname" (ngModelChange)="surname=$event"
+                    required>
+                </ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Segundo Apellido</ion-label>
+                <ion-input matInput name="secondSurname" type="text" [(ngModel)]="secondSurname"
+                    (ngModelChange)="secondSurname=$event">
+                </ion-input>
+            </ion-item>
+        </ng-container>
+
+        <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input matInput name="email" type="email" [(ngModel)]="email" (ngModelChange)="email=$event" required>
+            </ion-input>
+        </ion-item>
+    </ion-card-content>
+</ion-card>

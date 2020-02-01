@@ -1,0 +1,79 @@
+<ion-card>
+    <ion-card-content>
+        <ng-container *ngIf="profileInformation.role!=='Empresa'">
+            <ion-item>
+                <ion-label>Genero</ion-label>
+                <ion-select matNativeControl [(ngModel)]="gender" (ngModelChange)="gender=$event" name="gender"
+                    required>
+                    <ng-container *ngFor="let g of genders">
+                        <ion-select-option [value]="g">{{g}} </ion-select-option>
+                    </ng-container>
+                </ion-select>
+            </ion-item>
+        </ng-container>
+        <ng-container *ngIf="profileInformation.role!=='Recolector'">
+            <ion-item>
+                <ion-label>Empresa Asociada</ion-label>
+                <ion-select matNativeControl [(ngModel)]="companyAsociated" (ngModelChange)="companyAsociated=$event"
+                    name="companyAsociated" required>
+                    <ng-container *ngFor="let g of companies">
+                        <ion-select-option [value]="p.id">{{p.profileInformation.companyName}} </ion-select-option>
+                    </ng-container>
+                </ion-select>
+            </ion-item>
+        </ng-container>
+
+        <ion-item>
+            <ion-label>Tipo de Documento</ion-label>
+            <ion-select matNativeControl [(ngModel)]="documentType.id" (ngModelChange)="changeDocumentType($event)"
+                name="documentType" required>
+                <ng-container *ngFor="let p of documents">
+                    <ion-select-option [value]="p.id">{{p.abbreviation +" - "+ p.documentTypeName}} </ion-select-option>
+                </ng-container>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Número de documento</ion-label>
+            <ion-input matInput name="documentNumber" type="documentNumber" [(ngModel)]="documentNumber"
+                (ngModelChange)="documentNumber=$event" required>
+            </ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Teléfono</ion-label>
+            <ion-input matInput name="phone" type="phone" [(ngModel)]="phone" (ngModelChange)="phone=$event" required>
+            </ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Departamento</ion-label>
+            <ion-select matNativeControl [(ngModel)]="department.id" (ngModelChange)="changeDeparment($event)"
+                name="department" required>
+                <ng-container *ngFor="let p of departments">
+                    <ion-select-option [value]="p.id">{{p.departmentName}} </ion-select-option>
+                </ng-container>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Ciudad</ion-label>
+            <ion-select matNativeControl [(ngModel)]="city.id" (ngModelChange)="changeCity($event)" name="city"
+                required>
+                <ng-container *ngFor="let p of cities">
+                    <ion-select-option [value]="p.id">{{p.cityName}} </ion-select-option>
+                </ng-container>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Dirección</ion-label>
+            <ion-input matInput name="adress" type="adress" [(ngModel)]="adress" (ngModelChange)="adress=$event"
+                required>
+            </ion-input>
+        </ion-item>
+
+        <ion-button (click)="save()" expand="block">Guardar Cambios</ion-button>
+
+    </ion-card-content>
+</ion-card>
